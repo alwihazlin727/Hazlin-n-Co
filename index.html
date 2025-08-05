@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hazlin & Co – Family & Matrimonial Law</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-black: #0a0a0a;
+      --soft-black: #1a1a1a;
+      --charcoal: #2a2a2a;
+      --steel: #3a3a3a;
+      --silver: #6a6a6a;
+      --light-silver: #9a9a9a;
+      --pearl: #e8e8e8;
+      --ivory: #f8f8f8;
+      --pure-white: #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: var(--primary-black);
+      background: var(--pure-white);
+      overflow-x: hidden;
+      font-weight: 300;
+    }
+
+    /* Exclusive Background Graphics */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.02;
+      z-index: -1;
+      background-image: 
+        radial-gradient(circle at 20% 80%, var(--charcoal) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, var(--steel) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, var(--silver) 0%, transparent 50%);
+    }
+
+    .legal-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0.015;
+      background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M40 40c0-14.727 11.929-26.667 26.667-26.667S93.333 25.273 93.333 40 81.404 66.667 66.667 66.667 40 54.727 40 40zm0-26.667C40 25.273 28.071 13.333 13.333 13.333S-13.333 25.273-13.333 40s11.929 26.667 26.667 26.667S40 54.727 40 13.333z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .serif-font {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    header {
+      position: relative;
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%), 
+                  url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+      color: var(--pure-white);
+      padding: 6rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '⚖';
+      position: absolute;
+      font-size: 280px;
+      opacity: 0.03;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      font-weight: 100;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpath d='M20,20 L100,20 L100,100 L20,100 Z' fill='none' stroke='%23ffffff' stroke-width='0.3' opacity='0.02'/%3E%3Cpath d='M30,30 L90,30 L90,90 L30,90 Z' fill='none' stroke='%23ffffff' stroke-width='0.2' opacity='0.03'/%3E%3Cpath d='M40,40 L80,40 L80,80 L40,80 Z' fill='none' stroke='%23ffffff' stroke-width='0.1' opacity='0.04'/%3E%3C/svg%3E") repeat;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4.5rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+
+    header p {
+      font-size: 1.125rem;
+      opacity: 0.85;
+      position: relative;
+      z-index: 2;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    nav {
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 1.25rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--charcoal);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .nav-container a {
+      color: var(--light-silver);
+      text-decoration: none;
+      font-weight: 400;
+      padding: 0.75rem 1.5rem;
+      border-radius: 2px;
+      transition: all 0.4s ease;
+      position: relative;
+      letter-spacing: 0.025em;
+      font-size: 0.95rem;
+    }
+
+    .nav-container a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background: var(--pure-white);
+      transition: all 0.4s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-container a:hover {
+      color: var(--pure-white);
+      transform: translateY(-1px);
+    }
+
+    .nav-container a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.25rem;
+      font-weight: 400;
+      color: var(--primary-black);
+      margin-bottom: 3rem;
+      position: relative;
+      letter-spacing: -0.01em;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 0;
+      width: 80px;
+      height: 1px;
+      background: var(--primary-black);
+    }
+
+    .intro-section {
+      background: linear-gradient(135deg, rgba(248, 248, 248, 0.95) 0%, rgba(232, 232, 232, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+      margin: 3rem 0;
+      padding: 4rem;
+      border: 1px solid var(--pearl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-section::before {
+      content: '§';
+      position: absolute;
+      font-size: 160px;
+      color: var(--primary-black);
+      opacity: 0.02;
+      top: 20px;
+      right: 40px;
+      font-weight: 100;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .intro-section p {
+      font-size: 1.25rem;
+      color: var(--charcoal);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 900px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--pure-white);
+      padding: 3rem;
+      border: 1px solid var(--pearl);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary-black);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+      transform-origin: left;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 40px -10px rgba(0, 0, 0, 0.1);
+      border-color: var(--silver);
+    }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--primary-black);
+      font-size: 1.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .service-card p {
+      color: var(--steel);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .fees-section {
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
+      color: var(--pure-white);
+      padding: 5rem;
+      margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .fees-section::before {
+      content: '$';
+      position: absolute;
+      font-size: 200px;
+      opacity: 0.03;
+      top: 30px;
+      right: 50px;
+      font-weight: 100;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .fees-section h2 {
+      color: var(--pure-white);
+    }
+
+    .fees-section h2::after {
+      background: var(--pure-white);
+    }
+
+    .fee-item {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 2rem;
+      margin: 1.5rem 0;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .fee-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .fee-item strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .fee-item span {
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      margin: 3rem 0;
+    }
+
+    .step {
+      background: var(--pure-white);
+      padding: 3rem;
+      border: 1px solid var(--pearl);
+      position: relative;
+      text-align: center;
+      transition: all 0.4s ease;
+    }
+
+    .step:hover {
+      border-color: var(--primary-black);
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08);
+    }
+
+    .step-number {
+      background: var(--primary-black);
+      color: var(--pure-white);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 300;
+      margin: 0 auto 2rem;
+      font-size: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .step h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: var(--primary-black);
+      letter-spacing: -0.01em;
+    }
+
+    .step p {
+      color: var(--steel);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--primary-black);
+      color: var(--pure-white);
+      padding: 1.25rem 3rem;
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.4s ease;
+      margin-top: 3rem;
+      border: 2px solid var(--primary-black);
+      letter-spacing: 0.025em;
+      font-size: 0.95rem;
+    }
+
+    .btn:hover {
+      background: var(--pure-white);
+      color: var(--primary-black);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, rgba(248, 248, 248, 0.95) 0%, rgba(232, 232, 232, 0.95) 100%),
+                  url('https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80') center/cover;
+      padding: 5rem;
+      margin: 3rem 0;
+      position: relative;
+      border: 1px solid var(--pearl);
+    }
+
+    .contact-section::before {
+      content: '☎';
+      position: absolute;
+      font-size: 140px;
+      opacity: 0.02;
+      top: 40px;
+      right: 50px;
+      font-weight: 100;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .contact-item {
+      background: var(--pure-white);
+      padding: 2.5rem;
+      border: 1px solid var(--pearl);
+      border-left: 3px solid var(--primary-black);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      border-left-width: 5px;
+      transform: translateX(5px);
+    }
+
+    .contact-item strong {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--primary-black);
+      display: block;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .contact-item span {
+      color: var(--steel);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: var(--primary-black);
+      color: var(--light-silver);
+      text-align: center;
+      padding: 3rem;
+      margin-top: 5rem;
+      font-weight: 300;
+      letter-spacing: 0.025em;
+      font-size: 0.9rem;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, var(--ivory), var(--pearl));
+      padding: 1.5rem;
+      border-left: 3px solid var(--primary-black);
+      margin: 2rem 0;
+      position: relative;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .highlight::before {
+      content: '⚠';
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      opacity: 0.15;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 3rem;
+      }
+      
+      .nav-container {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 2.5rem;
+      }
+      
+      .intro-section,
+      .fees-section,
+      .contact-section {
+        padding: 3rem 2rem;
+      }
+
+      .services-grid,
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Smooth scrolling for navigation links
+      const navLinks = document.querySelectorAll("nav a");
+      navLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          const target = document.getElementById(targetId);
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 100,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Enhanced scroll effect for navigation
+      window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+          nav.style.background = 'rgba(10, 10, 10, 0.99)';
+          nav.style.backdropFilter = 'blur(25px)';
+        } else {
+          nav.style.background = 'rgba(10, 10, 10, 0.98)';
+          nav.style.backdropFilter = 'blur(20px)';
+        }
+      });
+
+      // Subtle animations on scroll
+      const observeElements = document.querySelectorAll('.service-card, .step, .contact-item');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observeElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="legal-pattern"></div>
+  
+  <header>
+    <div class="container">
+      <h1>Hazlin & Co</h1>
+      <p>Family & Matrimonial Law Specialists</p>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <a href="#services">Services</a>
+      <a href="#fees">Fees</a>
+      <a href="#process">Our Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section id="intro">
+      <div class="intro-section">
+        <h2>About Hazlin & Co</h2>
+        <p>Hazlin & Co is a dedicated Malaysian law firm offering expert legal support in family and matrimonial matters. With years of experience and compassion, our lawyers help you resolve your legal matters with clarity and care, ensuring every client receives the personalized attention they deserve.</p>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-image" style="background: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover; height: 160px; margin: -3rem -3rem 2rem -3rem; opacity: 0.1;"></div>
+          <h3>Mutual Consent Divorce</h3>
+          <p>Joint petition divorce proceedings for couples who agree on terms, ensuring a smooth and amicable resolution to matrimonial matters.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-image" style="background: url('https://images.unsplash.com/photo-1479142506502-19b3a3b7ff33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover; height: 160px; margin: -3rem -3rem 2rem -3rem; opacity: 0.1;"></div>
+          <h3>Contested Divorce</h3>
+          <p>Comprehensive legal representation for complex divorce proceedings requiring court intervention and detailed legal strategy.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-image" style="background: url('https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover; height: 160px; margin: -3rem -3rem 2rem -3rem; opacity: 0.1;"></div>
+          <h3>Child Custody & Visitation</h3>
+          <p>Protecting your parental rights and ensuring children's best interests are prioritized in all custody arrangements.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-image" style="background: url('https://images.unsplash.com/photo-1589578527966-fdac0f44566c?ixlib=rb-4.0.3&ixid=M3wxMJA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80') center/cover; height: 160px; margin: -3rem -3rem 2rem -3rem; opacity: 0.1;"></div>
+          <h3>Spousal Maintenance</h3>
+          <p>Fair determination of alimony and ongoing financial support arrangements based on individual circumstances.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-image" style="background: url('https://images.unsplash.com/photo-1434626881859-194d67b2b86f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2056&q=80') center/cover; height: 160px; margin: -3rem -3rem 2rem -3rem; opacity: 0.1;"></div>
+          <h3>Asset Division</h3>
+          <p>Equitable distribution of matrimonial property and assets with careful attention to legal precedent and fairness.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="fees">
+      <div class="fees-section">
+        <h2>Legal Fees</h2>
+        <p style="margin-bottom: 2rem; opacity: 0.9; font-weight: 300;">We offer transparent and competitive fees with no hidden costs:</p>
+        <div class="fee-item">
+          <strong>Mutual Consent Divorce</strong>
+          <span>RM 4,000 – RM 6,000</span>
+        </div>
+        <div class="fee-item">
+          <strong>Contested Divorce</strong>
+          <span>RM 6,000 – RM 10,000+</span>
+        </div>
+        <div class="highlight">
+          All fees are subject to complexity, jurisdiction, and specific case requirements. Initial consultation fees may apply.
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <h2>Divorce Process</h2>
+      <p style="color: var(--steel); font-weight: 300; margin-bottom: 2rem; font-size: 1.125rem;">Our streamlined mutual consent divorce process:</p>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Initial Consultation</h3>
+          <p>Comprehensive review of your situation, legal options, and tailored strategy development.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Documentation</h3>
+          <p>Meticulous preparation of all required legal documents and settlement agreement reviews.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Court Filing</h3>
+          <p>Official filing with the High Court and professional representation during hearings.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Final Resolution</h3>
+          <p>Issuance of final divorce certificate and completion of all legal formalities.</p>
+        </div>
+      </div>
+      <p style="color: var(--steel); font-weight: 300; margin: 2rem 0; font-size: 1.125rem;">We guide our clients through every step with discretion, professionalism, and unwavering support.</p>
+      <a href="#contact" class="btn">Schedule Consultation →</a>
+    </section>
+
+    <section id="contact">
+      <div class="contact-section">
+        <h2>Contact Us</h2>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <strong>Office Hours</strong>
+            <span>Monday – Friday<br>9:00 AM – 6:00 PM</span>
+          </div>
+          <div class="contact-item">
+            <strong>Locations</strong>
+            <span>Kuala Lumpur<br>Petaling Jaya<br>Ipoh</span>
+          </div>
+          <div class="contact-item">
+            <strong>Email</strong>
+            <span>contact@hazlinco.com.my</span>
+          </div>
+          <div class="contact-item">
+            <strong>Phone</strong>
+            <span>+60 12-345 6789</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Hazlin & Co. All Rights Reserved. | Confidential Legal Services</p>
+  </footer>
+</body>
+</html>
